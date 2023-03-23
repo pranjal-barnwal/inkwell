@@ -1,4 +1,4 @@
-package com.pranjallabs.drawmamba
+package com.pranjallabs.inkwell
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.pranjallabs.drawmamba
+package com.pranjallabs.inkwell
 
 import org.junit.Test
 

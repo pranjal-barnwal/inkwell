@@ -1,4 +1,4 @@
-package com.pranjallabs.drawmamba
+package com.pranjallabs.inkwell
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.pranjallabs.drawmamba", appContext.packageName)
+        assertEquals("com.pranjallabs.inkwell", appContext.packageName)
     }
 }

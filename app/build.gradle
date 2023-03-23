@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.pranjallabs.drawmamba'
+    namespace 'com.pranjallabs.inkwell'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.pranjallabs.drawmamba"
+        applicationId "com.pranjallabs.inkwell"
         minSdk 24
         targetSdk 33
         versionCode 1
