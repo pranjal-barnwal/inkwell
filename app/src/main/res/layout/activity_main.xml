@@ -12,10 +12,66 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:background="@drawable/background_drawing_view_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ribbon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/ribbon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_brush"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_brush"
+            android:background="@drawable/roundedcorner"
+            android:tooltipText="Brush size:"
+            android:clipToOutline="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_color"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_color"
+            android:background="@drawable/roundedcorner"
+            android:tooltipText="Select color:"
+            android:clipToOutline="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <ImageButton
+            android:id="@+id/ib_eraser"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_eraser"
+            android:background="@drawable/roundedcorner"
+            android:tooltipText="Eraser:"
+            android:clipToOutline="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <ImageButton
+            android:id="@+id/ib_reset"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_reset"
+            android:background="@drawable/roundedcorner"
+            android:tooltipText="Reset drawboard:"
+            android:clipToOutline="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,10 @@ package com.pranjallabs.inkwell
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 
 class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
     // we kind of are trying to store the pixels painted
@@ -13,7 +15,7 @@ class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
     private var mDrawPaint: Paint? = null
     private var mCanvasPaint: Paint? = null
     private var mBrushSize: Float = 0.toFloat()
-    private var color = Color.BLACK
+    private var color = Color.rgb(155, 151, 255)
     private var canvas:Canvas? = null
     private val mPaths = ArrayList<CustomPath>()
 
@@ -38,6 +40,10 @@ class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
         canvas = Canvas(mCanvasBitmap!!)
     }
 
+    fun clearDoodle(){
+        mPaths.clear()
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
@@ -45,7 +51,7 @@ class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
         for(path in mPaths){
             mDrawPaint!!.strokeWidth = path!!.brushThickness
             mDrawPaint!!.color = path!!.color
-            canvas.drawPath(path!!, mDrawPaint!!)
+            canvas?.drawPath(path!!, mDrawPaint!!)
         }
 
         if(!mDrawPath!!.isEmpty){
@@ -80,6 +86,18 @@ class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
         invalidate()
 
         return true
+    }
+
+    fun setSizeForBrush(newSize:Float){
+        // we will be setting the burshSize to newSize depending on the metrics of our display
+        mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, resources.displayMetrics)
+        mDrawPaint?.strokeWidth = mBrushSize
+    }
+
+    // this function will help to update the color of selected pen from the Color-Dialog activity
+    fun setColor(newColor: String){
+        color = Color.parseColor(newColor)
+        mDrawPaint!!.color = color
     }
 
     internal inner class CustomPath(var color:Int, var brushThickness:Float) : Path() {
