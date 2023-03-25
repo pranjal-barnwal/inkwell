@@ -18,9 +18,30 @@ class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
     private var color = Color.rgb(155, 151, 255)
     private var canvas:Canvas? = null
     private val mPaths = ArrayList<CustomPath>()
+    private val mUndoPaths = ArrayList<CustomPath>()
 
     init{
         setUpDrawing()
+    }
+
+    fun onClickUndo(){
+        if(mPaths.size > 0){
+            // we are basically removing the last item from mPaths and inserting it into mUndoPaths
+            mUndoPaths.add(mPaths.removeAt(mPaths.size-1))
+
+            // to take in affect of the changes
+            invalidate()
+        }
+    }
+
+    fun onClickRedo(){
+        if(mUndoPaths.size > 0){
+            // we are basically removing the last item from mPaths and inserting it into mUndoPaths
+            mPaths.add(mUndoPaths.removeAt(mUndoPaths.size-1))
+
+            // to take in affect of the changes
+            invalidate()
+        }
     }
 
     private fun setUpDrawing(){
@@ -42,6 +63,9 @@ class DrawingView(context: Context, attrs:AttributeSet): View(context, attrs) {
 
     fun clearDoodle(){
         mPaths.clear()
+
+        // to take in affect of the changes
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
