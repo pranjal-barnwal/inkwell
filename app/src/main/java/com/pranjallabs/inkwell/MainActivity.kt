@@ -20,11 +20,12 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import android.media.MediaScannerConnection
+import android.net.Uri
 import android.provider.MediaStore
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -192,15 +193,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun shareImage(result:String){
-        MediaScannerConnection.scanFile(this, arrayOf(result), null){
-            path, uri ->
-            val shareIntent = Intent()
-            shareIntent.action = Intent.ACTION_SEND
-            shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
-            shareIntent.type = "image/png"
-            startActivity(Intent.createChooser(shareIntent, "Share"))
-        }
+    private fun shareImage(uri: Uri){
+        val shareIntent = Intent()
+        shareIntent.action = Intent.ACTION_SEND
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
+        shareIntent.type = "image/png"
+        startActivity(Intent.createChooser(shareIntent, "Share"))
     }
 
 
@@ -301,7 +299,7 @@ class MainActivity : AppCompatActivity() {
                         if(result.isNotEmpty()){
                             if(isShareOn == true){
                                 isShareOn = false
-                                shareImage(result)
+                                shareImage(FileProvider.getUriForFile(baseContext,"com.pranjallabs.inkwell.fileprovider", f))
                             }
                             else{
                                 Toast.makeText(
