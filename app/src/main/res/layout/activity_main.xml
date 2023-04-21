@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:id="@+id/fl_drawingViewContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_drawing_view_layout"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:scaleType="centerCrop"
+            android:contentDescription="image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.pranjallabs.inkwell.DrawingView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/drawing_view"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:layout_margin="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/rounded_linear_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <LinearLayout
+            android:id="@+id/ribbon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/ll_action_buttons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageButton
+                android:id="@+id/ib_brush"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_brush"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Brush size:"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ib_color"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_color"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Select color:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_eraser"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_eraser"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Eraser:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_reset"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_reset"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Reset drawboard:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_hideImage"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_hideimage"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Hide Image:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_action_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageButton
+                android:id="@+id/ib_undo"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_undo"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Undo stroke:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_redo"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_redo"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Redo stroke:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_image"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_image"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Select overlay image:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_save"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_save"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Save image:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/ib_share"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_share"
+                android:background="@drawable/roundedcorner"
+                android:tooltipText="Share image:"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
